@@ -41,11 +41,11 @@ class Employe_salarie(Employe):
 class Employe_heure(Employe):  
     def __init__(self, id, nom, heures_travaillees, taux_horaire):
         super().__init__(id, nom)
-        self.heures_travaillees = heures_travaillees
-        self.taux_horaire = taux_horaire
+        self._heures_travaillees = heures_travaillees
+        self._taux_horaire = taux_horaire
         
     def calculer_paie(self):
-        return self.heures_travaillees * self.taux_horaire
+        return self._heures_travaillees * self._taux_horaire
     
 class Employe_commission(Employe_salarie):  
     def __init__(self, id, nom, salaire_par_semaine, commission):

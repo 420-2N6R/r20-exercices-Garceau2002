@@ -30,10 +30,13 @@ class Employe(ABC):
 class Employe_salarie(Employe):
     def __init__(self, id, nom, salaire_par_semaine):
         super().__init__(id, nom)
-        self.salaire_par_semaine = salaire_par_semaine
+        self._salaire_par_semaine = salaire_par_semaine
         
     def calculer_paie(self):
-        return self.salaire_par_semaine
+        return self._salaire_par_semaine
+    @property
+    def salaire88(self):
+        return self._salaire_par_semaine
  
 class Employe_heure(Employe):  
     def __init__(self, id, nom, heures_travaillees, taux_horaire):

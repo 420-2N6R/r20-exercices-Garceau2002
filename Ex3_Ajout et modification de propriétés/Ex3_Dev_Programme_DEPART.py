@@ -12,7 +12,11 @@ class Employe:
     def __str__(self):
         info = f'\t ID: {self.id_employe}, \n\t Nom: {self.nom}, \n\t Prénom: {self.prenom}, \n\t Role: {self.role}'
         return info
-
+    def new_salary(self,salaire):
+        if salaire > self.salaire:
+            self.salaire = salaire
+        else:
+            raise ValueError("Le nouveau salaire doit être supérieur à l'ancien")
 class Programmeur(Employe): 
     def __init__(self,id_employe,prenom, nom, role, salaire,liste_fonctions=None):
         super().__init__(id_employe,prenom, nom, role, salaire)
@@ -21,7 +25,7 @@ class Programmeur(Employe):
         else:
             self.liste_fonctions = []
     
-    def coder(self,fonction):
+    def logger(self,fonction):
         self.liste_fonctions.append(fonction)
         
     def __str__(self):
@@ -37,7 +41,7 @@ class Designer(Employe):
         else:
             self.liste_artefacts = []
     
-    def dessiner(self,artefact):
+    def logger(self,artefact):
         self.liste_artefacts.append(artefact)
         
     def __str__(self):
@@ -53,7 +57,7 @@ class Tech_Reseau(Employe):
         else:
             self.liste_interventions = []
     
-    def intervenir(self,intervention):
+    def logger(self,intervention):
         self.liste_interventions.append(intervention)
         
     def __str__(self):
@@ -135,15 +139,15 @@ nouvelle_equipe.ajouter_employe(top_designer,datetime.date.today())
 nouvelle_equipe.ajouter_employe(architecte_principal,datetime.date.today())
 
 # Ajout d'une fonction pour le gestionnaire
-gestionnaire.coder("Entrevues pour remplir l'équipe")
+gestionnaire.logger("Entrevues pour remplir l'équipe")
 print("\nInfos sur le gestionnaire:")
 print(gestionnaire)
 print("\nInfos sur le designer")
-top_designer.dessiner("logo")
+top_designer.logger("logo")
 print(top_designer)
 # Ajout de 2 interventions pour l'architecte principal
-architecte_principal.intervenir("Mise en place de 3 serveurs")
-architecte_principal.intervenir("Installation du vlan pour l'équipe de développement")
+architecte_principal.logger("Mise en place de 3 serveurs")
+architecte_principal.logger("Installation du vlan pour l'équipe de développement")
 print("\nInfos sur l'architecte principal")
 print(architecte_principal)
 

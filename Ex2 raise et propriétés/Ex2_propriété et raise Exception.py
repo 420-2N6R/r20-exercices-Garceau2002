@@ -26,15 +26,24 @@ class Sphere:
     
     @property
     def rayon(self) :
+        return self._rayon
+    @rayon.setter
+    def rayon(self,pRayon):
+        if type(pRayon) != int and type(pRayon) != float:
+            raise TypeError ("Vous devez écrire un chiffre")
+        elif pRayon <= 0:
+            raise ValueError ("Le rayon doit être plus grand que 0")
+        self._rayon = pRayon    
         pass
-
     @property
     def circonference(self):
-        pass # la circonférence d'une sphère est égal à " 2 * pi * rayon "
+        return(2*pi*self._rayon)
+ # la circonférence d'une sphère est égal à " 2 * pi * rayon "
 
     @property
     def volume(self):
-        pass # le volume d'une sphère est égale à " 4/3 * pi * (rayon ** 3) "
+        return(4/3*pi*(self._rayon**3))
+ # le volume d'une sphère est égale à " 4/3 * pi * (rayon ** 3) "
 
     @property
     def aire(self):
@@ -46,4 +55,6 @@ if __name__ == "__main__" :
 
     #Testez votre code, voir l'énoncé
 
-Sphere(2)
+
+cercle = Sphere(20)
+print (cercle.volume)

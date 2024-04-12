@@ -18,10 +18,16 @@ from math import pi
 
 class Sphere:
     def __init__(self, pRayon) -> None:
-        self._rayon = pRayon
+        if type(pRayon) != int and type(pRayon) != float:
+            raise TypeError ("Vous devez écrire un chiffre")
+        elif pRayon <= 0:
+            raise ValueError ("Le rayon doit être plus grand que 0")
+        else:
+            self.rayon = pRayon
     
     @property
     def rayon(self) :
+
         pass
 
     @property
@@ -41,4 +47,4 @@ if __name__ == "__main__" :
     print(pi) #voyez que vous pouvez utilisé la constante pi
 
     #Testez votre code, voir l'énoncé
-
+Sphere("3")

@@ -6,9 +6,9 @@
 
 class Terrain:
     def __init__(self,nom,couleur,est_a_vendre,prix) -> None:
-        self.nom = nom
-        self.couleur = couleur
-        self.prix = prix
+        self._nom = nom
+        self._couleur = couleur
+        self._prix = prix
         
     def __str__(self) -> str:
         return self.nom
